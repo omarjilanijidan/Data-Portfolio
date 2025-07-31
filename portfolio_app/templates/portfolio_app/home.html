@@ -1,0 +1,54 @@
+{% extends 'portfolio_app/base.html' %}
+{% block content %}
+<!-- Technology Section -->
+<section class="mb-20">
+    <p class="text-teal-600 font-semibold mb-2">Showcase</p>
+    <h2 class="text-4xl font-bold mb-8">Projects by Technology</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {% for tech in technologies %}
+        <div class="{% if tech.is_highlighted %}bg-teal-700 text-white{% else %}bg-white{% endif %} p-6 rounded-lg shadow-md flex flex-col items-start space-y-4">
+            <div class="{% if tech.is_highlighted %}bg-teal-600{% else %}{{ tech.icon_bg_color }}{% endif %} p-2 rounded-md">{{ tech.icon_svg_html|safe }}</div>
+            <h3 class="font-bold text-lg">{{ tech.name }}</h3>
+            <a href="#" class="text-sm font-semibold {% if tech.is_highlighted %}text-teal-200 hover:text-white{% else %}text-teal-600 hover:text-teal-700{% endif %}">View</a>
+        </div>
+        {% empty %}
+        <p>No technologies added yet.</p>
+        {% endfor %}
+    </div>
+</section>
+<!-- Services Section -->
+<section class="mb-20">
+    <h2 class="text-4xl font-bold mb-8">What I Offer</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for service in services %}
+        <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="mx-auto {{ service.icon_bg_color }} rounded-full h-16 w-16 flex items-center justify-center mb-4">{{ service.icon_svg_html|safe }}</div>
+            <h3 class="font-bold text-xl mb-2">{{ service.title }}</h3>
+            <p class="text-gray-600 text-sm">{{ service.description }}</p>
+        </div>
+        {% empty %}
+        <p>No services added yet.</p>
+        {% endfor %}
+    </div>
+</section>
+<!-- Projects Section -->
+<section>
+    <h2 class="text-4xl font-bold mb-8">Latest Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for project in projects %}
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="{{ project.card_color_class }} h-48 flex items-center justify-center p-6">
+                <h2 class="text-3xl font-bold text-white text-center">{{ project.title }}</h2>
+            </div>
+            <div class="p-6">
+                <h3 class="font-bold text-xl mb-2">{{ project.subtitle }}</h3>
+                <p class="text-gray-600 mb-4 text-sm">{{ project.description }}</p>
+                <a href="{{ project.project_link|default:'#' }}" class="font-semibold text-teal-600 hover:text-teal-700">Read More &rarr;</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="col-span-full text-gray-500">No projects have been added yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

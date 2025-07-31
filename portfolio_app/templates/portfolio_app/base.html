@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analyst Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="w-full">
+        <header class="relative flex justify-between items-center py-4 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <a href="{% url 'home' %}" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                <h1 class="text-xl font-bold">Data Analyst</h1>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="{% url 'home' %}" class="{% if page == 'home' %}text-teal-600 font-semibold{% else %}text-gray-600{% endif %} hover:text-teal-600 transition-colors">Home</a>
+                <a href="{% url 'about' %}" class="{% if page == 'about' %}text-teal-600 font-semibold{% else %}text-gray-600{% endif %} hover:text-teal-600 transition-colors">About</a>
+                <a href="{% url 'contact' %}" class="{% if page == 'contact' %}text-teal-600 font-semibold{% else %}text-gray-600{% endif %} hover:text-teal-600 transition-colors">Contact</a>
+            </nav>
+        </header>
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {% block content %}{% endblock %}
+        </main>
+        <footer class="text-center text-gray-500 mt-20 py-6 border-t max-w-7xl mx-auto">
+            <p>&copy; {% now "Y" %} Data Analyst. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
