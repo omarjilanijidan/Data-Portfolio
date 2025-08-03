@@ -1,0 +1,30 @@
+# Ignore virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore database
+*.sqlite3
+
+# Ignore environment variables file
+.env
+
+# Ignore static files collected
+staticfiles/
+
+# Ignore media files (if used)
+media/
+
+# Ignore VSCode and other editor configs
+.vscode/
+.idea/
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore migrations if you want to regenerate later
+**/migrations/*.py
+!**/migrations/__init__.py
